@@ -1,0 +1,80 @@
+﻿<HTML>
+	
+<HEAD>
+	
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+	
+	function Calendar(Month,Year)
+	{
+	  var now = new Date();
+	  firstDay = new Date(Year,Month,1);
+	  startDay = firstDay.getDay();
+	  
+	
+	  if (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0))
+	       	days[1] = 29; 
+	  else
+		days[1] = 28;
+	  var output_string = ""
+	  output_string += "<CENTER>"
+	  output_string += "<TABLE BORDER=1 >"
+	  output_string += "<td COLSPAN=7 align = 'center'>" 
+	  output_string += "<FONT COLOR=blue SIZE=6 >"
+	  output_string += now.getFullYear() + "년 " + (now.getMonth()+1) + "월"
+	  output_string += "</FONT>"
+	  output_string += "</td>"
+	
+	  var openCol = "<TD BGCOLOR=silver WIDTH=70 HEIGHT=50> "
+	  var closeCol = "</FONT></TD>"
+	  output_string += "<TR ALIGN=center>"
+	  var weekDay = new Array("일", "월", "화", "수", "목", "금", "토")
+	
+	 
+	  for (var dayNum = 0; dayNum <= 6; dayNum++)
+	     	output_string += openCol + weekDay[dayNum] + closeCol 
+	
+	  output_string += "</TR>"
+	  document.write(output_string);
+	document.write("<TR ALIGN=RIGHT>");
+	
+	  var column = 0;
+	  for (i=0; i<startDay; i++)
+	  {
+	     document.write("<TD>&nbsp</TD>");
+	     column++;
+	  }
+	
+ 
+	  for (i=1; i<=days[Month]; i++)
+	  { 
+	       
+	        document.write("<TD WIDTH=70 HEIGHT=50>"+i+"</TD>");
+	        column++;
+	        if (column == 7)
+	        {
+	           document.write("</TR><TR ALIGN=RIGHT>");
+	           column = 0;
+	        }
+	  }
+
+	   document.write("</TR></TABLE>");
+	}
+	    
+	
+	var days = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+	var today = new Date();
+	var thisMonth = today.getMonth();
+	var thisYear = today.getYear();
+
+	Calendar(thisMonth,thisYear);
+	
+	//-->
+	</SCRIPT>
+	
+
+</BODY>
+</HTML>
